@@ -7,6 +7,6 @@ defmodule SessionController do
 
   def index(conn, _params) do
     conn 
-    |> json(%{ status: "OK" })
+    |> json(%{ status: "OK2" })
   end
 end
