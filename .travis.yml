@@ -1,0 +1,17 @@
+language: elixir
+elixir:
+- 1.2
+otp_release:
+- 18.2
+sudo: false
+addons:
+  postgresql: '9.4'
+  before_script:
+  - psql -c 'create database peepchat_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: QbqWp2nj3wGR8wV3XP7X3u1nV8c4VQqZoK4JZKyrmLXPDfauyduBb/mbpVlN4oLjzhofKBBvgOZ8c20DPi+fP2kLuMoKubE6bOhnWgEeLXmkalFXrcEdCsimYtKI5tMkRaI4Kd9hwYy2tFAbR1wgImyoBnQU/uJCxBz/e+ApprKE4TdYWv9LYoh0J3DFiLG7+FH6zNXwTqy/ibKG3TgETCfHWz/M2NMz8f9JCfiO07VWYGSQbuqMrfEAb463tbwayjVbapE5TSebcOE18t9XZ9bi+mHnXJzEdjG6iMxAfh1IRSrcXiGityn2sKF77/OsxTSpQdrAFbOiQso7c/Qewmg09r+UImP3Rdnc+1X8v1qCncbci78xKYLQDXdN8A5g8b/EgpoAnt19RKJYH+AA+B8LUD5mUh2II9jD3GZ9bqrG/DpIc8rOTiom1P4uFogRblpqaLCPVxaqXrhY8inl/AlA/mJbe/M+PqvbVWu57HcVmFl1+whTmNXxR+zF06Al352nR+Iv/VovptYYIcQCd+J4PhyiQ8A9WEMfYA6+B1PpdKhZatZm2nEo5AgC9aPZVTI/rpdntqO4/iWbIuScVM4N/5UiIvKjogEN9M2nRkLnZTOKbk+lGrZrF+Lg6IDxf6okzmPKWa/OiKeZQfbxCvB1fmfyqlGhmHWXGJza5lE=
+  app: ancient-meadow-99962
+  on:
+    repo: tofferoma/peep-api
