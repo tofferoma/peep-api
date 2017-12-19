@@ -11,9 +11,11 @@ config :peepchat,
 
 # Configures the endpoint
 config :peepchat, PeepchatWeb.Endpoint,
+  http: [port: {:system, "PORT"}]
   url: [host: "localhost"],
-  secret_key_base: "r2OF+x5B45MrJRPlFLb8n8hor8Gc+crgLYtiZrQHw+yKs79ZZiBRyrMQLTqZVU5I",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [view: PeepchatWeb.ErrorView, accepts: ~w(json)],
+  cache_static_manifest: "priv/static/manifest.json"
   pubsub: [name: Peepchat.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
@@ -27,6 +29,13 @@ config :phoenix, :format_encoders,
 
 config :mime, :types, %{
   "application/vnd.api+json" => ["json-api"]
+}
+
+config: :peepchat, Peepchat.Repo, %{
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env("DATABASE_URL"),
+  pool_size: 20
+
 }
 
 # Import environment specific config. This must remain at the bottom
