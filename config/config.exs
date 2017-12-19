@@ -15,7 +15,6 @@ config :peepchat, PeepchatWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [view: PeepchatWeb.ErrorView, accepts: ~w(json)],
-  cache_static_manifest: "priv/static/manifest.json",
   pubsub: [name: Peepchat.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
